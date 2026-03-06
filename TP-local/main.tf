@@ -37,11 +37,12 @@ resource "docker_image" "curl" {
 }
 
 resource "docker_container" "client" {
-  name  = "client"
+  name  = "client-${count.index}"
+  count = var.client_count
   image = docker_image.curl.image_id
   depends_on = [docker_container.nginx]
   networks_advanced {
     name = docker_network.private_network.id
   }
-  command= ["sh", "-c", "curl -fsSL http://nginx:${var.internal_port} && sleep 1"]
+  command= ["sh", "-c", "curl -fsSL http://nginx:${var.internal_port} && sleep 30"]
 }

@@ -21,4 +21,7 @@ resource "docker_container" "nginx" {
     internal = var.internal_port
     external = var.external_port
   }
+  provisioner "local-exec" {
+    command = "curl http://localhost:${var.external_port} | findstr 'Welcome'"
+  }  
 }

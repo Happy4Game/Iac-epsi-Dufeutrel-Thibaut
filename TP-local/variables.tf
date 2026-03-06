@@ -22,8 +22,3 @@ variable external_port {
   description = "External port"
 }
 
-variable client_count {
-  type        = number
-  default     = 1
-  description = "Amount of clients"
-}

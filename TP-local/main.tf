@@ -37,8 +37,8 @@ resource "docker_image" "curl" {
 }
 
 resource "docker_container" "client" {
-  name  = "client-${count.index}"
-  count = var.client_count
+  for_each = toset(["server-1","server-2","server-x"])
+  name  = "client-${each.key}"
   image = docker_image.curl.image_id
   depends_on = [docker_container.nginx]
   networks_advanced {

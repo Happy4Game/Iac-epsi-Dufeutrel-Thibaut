@@ -1,21 +1,24 @@
 terraform {
   required_providers {
-    local = {
-      source  = "hashicorp/local"
-      version = "~> 2.0"
+    docker = {
+      source  = "kreuzwerker/docker"
+      version = "3.5.0"
     }
   }
 }
 
-provider "local" {}
+provider "docker" {}
 
-resource "local_file" "test_file" {
-  content  = "Hello depuis Terraform (mais update pour l'étape 2) !"
-  filename = "${path.module}/hello.txt"
+resource "docker_image" "nginx" {
+  name         = "nginx:latest"
+  keep_locally = true
 }
 
-resource "null_resource" "example" {
-  provisioner "local-exec" {
-    command = "echo 'Commande exécutée !'"
+resource "docker_container" "nginx" {
+  name  = "nginx-terraform"
+  image = docker_image.nginx.image_id
+  ports {
+    internal = 80
+    external = 8080
   }
 }

@@ -10,6 +10,6 @@ terraform {
 provider "local" {}
 
 resource "local_file" "test_file" {
-  content  = "Hello depuis Terraform !"
+  content  = "Hello depuis Terraform (mais update pour l'étape 2) !"
   filename = "${path.module}/hello.txt"
 }

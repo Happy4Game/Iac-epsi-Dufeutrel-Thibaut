@@ -3,6 +3,8 @@ image_name      = "nginx:latest"
 internal_port   = 80
 external_port   = 8080
 
+aws_access_key_secret = "test" # Je sais que c'est interdit, mais c'est pour vous simplifier la vie
+
 machines = [
   {
     name      = "web-server-1"

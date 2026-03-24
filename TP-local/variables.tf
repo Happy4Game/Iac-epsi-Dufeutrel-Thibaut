@@ -22,6 +22,30 @@ variable external_port {
   description = "External port"
 }
 
+variable aws_endpoint {
+  type        = string
+  default     = "http://localhost:4566"
+  description = "Url of aws endpoint"
+}
+
+variable aws_region {
+  type        = string
+  default     = "us-east-1"
+  description = "Region of aws"
+}
+
+variable aws_access_key_id {
+  type        = string
+  default     = "test"
+  description = "Id of aws"
+}
+
+variable aws_access_key_secret {
+  type        = string
+  description = "Secret"
+  sensitive   = true
+}
+
 variable machines {
   type = list(object({
     name      = string

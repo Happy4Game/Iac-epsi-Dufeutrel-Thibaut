@@ -22,12 +22,6 @@ variable external_port {
   description = "External port"
 }
 
-variable aws_endpoint {
-  type        = string
-  default     = "http://localhost:4566"
-  description = "Url of aws endpoint"
-}
-
 variable aws_region {
   type        = string
   default     = "us-east-1"
@@ -36,13 +30,12 @@ variable aws_region {
 
 variable aws_access_key_id {
   type        = string
-  default     = "test"
+  default     = "ASIA47CRXFHP6MY7JWOK"
   description = "Id of aws"
 }
-
-variable aws_access_key_secret {
+variable aws_secret_key {
   type        = string
-  description = "Secret"
+  description = "Token aws"
   sensitive   = true
 }
 
